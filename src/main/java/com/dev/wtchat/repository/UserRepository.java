@@ -1,0 +1,12 @@
+package com.dev.wtchat.repository;
+
+import com.dev.wtchat.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+    // That's it
+}
