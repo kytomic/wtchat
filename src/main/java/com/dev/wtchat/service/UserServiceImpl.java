@@ -25,6 +25,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getUserByDetail(User user) {
+        Optional<User> retrievedUser = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+        return retrievedUser.orElse(null);
+    }
+
+    @Override
     public void deleteUserById(int userId) {
         userRepository.deleteById(userId);
     }

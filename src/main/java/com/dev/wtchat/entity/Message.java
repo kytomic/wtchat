@@ -35,6 +35,7 @@ public class Message {
     @Column(name = "status")
     private int status;
 
+
     public Message(String body, int senderId, int receiverId) {
         this.body = body;
         this.senderId = senderId;

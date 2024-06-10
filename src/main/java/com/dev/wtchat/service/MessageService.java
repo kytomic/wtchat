@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.dev.wtchat.entity.Message;
+import com.dev.wtchat.entity.MessageDetail;
 
 public interface MessageService {
 
@@ -12,6 +13,8 @@ public interface MessageService {
 
     // Read Operation
     Optional<Message> getMessageById(Integer messageId);
+
+    List<MessageDetail> getMessageDetails();
 
     // Read all Operation
     List<Message> fetchMessages();

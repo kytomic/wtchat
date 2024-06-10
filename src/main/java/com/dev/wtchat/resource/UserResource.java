@@ -20,6 +20,12 @@ public class UserResource {
         return ResponseEntity.ok().body("User Creation Successful");
     }
 
+    @PostMapping("/login")
+    ResponseEntity<User> authenticateUser(@RequestBody User loginUser) {
+        User user = userService.getUserByDetail(loginUser);
+        return ResponseEntity.ok().body(user);
+    }
+
     @GetMapping("/{userId}")
     ResponseEntity<User> getUser(@PathVariable int userId) {
         return ResponseEntity.ok().body(userService.getUserById(userId));

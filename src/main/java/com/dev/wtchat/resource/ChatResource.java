@@ -1,6 +1,7 @@
 package com.dev.wtchat.resource;
 
 import com.dev.wtchat.entity.Message;
+import com.dev.wtchat.entity.MessageDetail;
 import com.dev.wtchat.repository.MessageRepository;
 import com.dev.wtchat.service.MessageService;
 import lombok.RequiredArgsConstructor;
@@ -26,23 +27,23 @@ public class ChatResource {
 
     // test message service
     @PostMapping("/create")
-    ResponseEntity<String> testCreateMessage(@RequestBody Message newMessage) {
+    ResponseEntity<String> createMessage(@RequestBody Message newMessage) {
         messageService.createMessage(newMessage);
         return ResponseEntity.ok().body("Message Creation Successful");
     }
 
     @GetMapping("/{messageId}")
-    ResponseEntity<Message> testGetMessage(@PathVariable Integer messageId) {
+    ResponseEntity<Message> getMessage(@PathVariable Integer messageId) {
         return ResponseEntity.ok().body(messageService.getMessageById(messageId).get());
     }
 
     @GetMapping("/all")
-    ResponseEntity<List<Message>> testGetAllMessage() {
-        return ResponseEntity.ok().body(messageService.fetchMessages());
+    ResponseEntity<List<MessageDetail>> getAllMessage() {
+        return ResponseEntity.ok().body(messageService.getMessageDetails());
     }
 
     @PutMapping("/delete/{messageId}")
-    ResponseEntity<String> testDeleteMessage(@PathVariable Integer messageId) {
+    ResponseEntity<String> deleteMessage(@PathVariable Integer messageId) {
         messageService.deleteMessageById(messageId);
         return ResponseEntity.ok().body("Deleted Message " + messageId);
     }

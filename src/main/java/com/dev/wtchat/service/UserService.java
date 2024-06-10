@@ -12,6 +12,8 @@ public interface UserService {
     // Read Operation
     public User getUserById(int userId);
 
+    public User getUserByDetail(User user);
+
     // Delete Operation
     public void deleteUserById(int userId);
 }

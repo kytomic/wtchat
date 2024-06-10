@@ -1,5 +1,6 @@
 package com.dev.wtchat.service;
 
+import com.dev.wtchat.entity.MessageDetail;
 import com.dev.wtchat.repository.MessageRepository;
 import com.dev.wtchat.entity.Message;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,11 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Optional<Message> getMessageById(Integer messageId) {
         return messageRepository.findById(messageId);
+    }
+
+    @Override
+    public List<MessageDetail> getMessageDetails() {
+        return messageRepository.getMessageDetails();
     }
 
     @Override
