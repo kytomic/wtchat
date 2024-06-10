@@ -26,20 +26,15 @@ public class Message {
     @Column(name = "senderId")
     private int senderId;
 
-    @Column(name = "receiverId")
-    private int receiverId;
-
     @Column(name = "sendingTime")
     private LocalDateTime sendingTime;
 
     @Column(name = "status")
     private int status;
 
-
-    public Message(String body, int senderId, int receiverId) {
+    public Message(String body, int senderId) {
         this.body = body;
         this.senderId = senderId;
-        this.receiverId = receiverId;
         this.sendingTime = LocalDateTime.now();
         this.status = 1;
     }

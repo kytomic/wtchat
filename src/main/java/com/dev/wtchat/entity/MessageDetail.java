@@ -11,11 +11,9 @@ import lombok.ToString;
 public class MessageDetail {
     private Message message;
     private String senderName;
-    private String receiverName;
 
-    public MessageDetail(Message message, String senderName, String receiverName) {
+    public MessageDetail(Message message, String senderName) {
         this.message = message;
         this.senderName = senderName;
-        this.receiverName = receiverName;
     }
 }

@@ -23,6 +23,8 @@ public class UserResource {
     @PostMapping("/login")
     ResponseEntity<User> authenticateUser(@RequestBody User loginUser) {
         User user = userService.getUserByDetail(loginUser);
+        if (user != null)
+            user.setPassword(null);
         return ResponseEntity.ok().body(user);
     }
 

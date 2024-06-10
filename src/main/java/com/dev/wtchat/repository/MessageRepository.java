@@ -15,10 +15,9 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
     @Override
     Optional<Message> findById(Integer id);
 
-    @Query("SELECT NEW com.dev.wtchat.entity.MessageDetail(m, u1.username, u2.username)" +
+    @Query("SELECT NEW com.dev.wtchat.entity.MessageDetail(m, u1.username)" +
             " FROM Message m" +
-            " JOIN User u1 ON u1.id = m.senderId" +
-            " JOIN User u2 ON u2.id = m.receiverId")
+            " JOIN User u1 ON u1.id = m.senderId")
     List<MessageDetail> getMessageDetails();
 
 }

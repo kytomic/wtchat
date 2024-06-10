@@ -7,8 +7,12 @@ import com.dev.wtchat.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
 
@@ -31,6 +35,16 @@ public class ChatResource {
         messageService.createMessage(newMessage);
         return ResponseEntity.ok().body("Message Creation Successful");
     }
+
+    @MessageMapping("/send")
+    @SendTo("/chatroom/public")
+    public MessageDetail broadcastMessage(@Payload MessageDetail message) throws Exception {
+        Thread.sleep(100);
+        message.getMessage().setSendingTime(LocalDateTime.now());
+        messageService.createMessage(message.getMessage());
+        return message;
+    }
+
 
     @GetMapping("/{messageId}")
     ResponseEntity<Message> getMessage(@PathVariable Integer messageId) {
